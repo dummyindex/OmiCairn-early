@@ -1,0 +1,31 @@
+{
+    "name": "cellrank_trajectory",
+    "description": "CellRank trajectory analysis using precomputed pseudotime to compute transition matrices and fate probabilities",
+    "parameters": {
+        "pseudotime_key": {
+            "type": "string",
+            "default": "dpt_pseudotime",
+            "description": "Column name in adata.obs containing precomputed pseudotime values"
+        },
+        "kernel_type": {
+            "type": "string",
+            "default": "pseudotime",
+            "description": "Type of kernel to use: 'pseudotime' or 'velocity'"
+        },
+        "n_states": {
+            "type": "integer",
+            "default": null,
+            "description": "Number of macrostates. If null, will be automatically determined"
+        },
+        "cluster_key": {
+            "type": "string",
+            "default": "leiden",
+            "description": "Key in adata.obs containing clustering information"
+        },
+        "basis": {
+            "type": "string",
+            "default": "umap",
+            "description": "Basis for visualization: 'umap' or 'tsne'"
+        }
+    }
+}

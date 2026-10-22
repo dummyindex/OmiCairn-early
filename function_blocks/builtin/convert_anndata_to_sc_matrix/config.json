@@ -1,0 +1,34 @@
+{
+  "name": "convert_anndata_to_sc_matrix",
+  "type": "python",
+  "description": "Convert AnnData to shared single-cell matrix format",
+  "static_config": {
+    "args": [],
+    "description": "Convert AnnData to SC matrix format for R interoperability",
+    "tag": "conversion",
+    "input_specification": {
+      "required_files": [
+        {
+          "name": "_node_anndata.h5ad",
+          "type": "anndata",
+          "description": "AnnData object to convert"
+        }
+      ]
+    },
+    "output_specification": {
+      "output_files": [
+        {
+          "name": "_node_sc_matrix",
+          "type": "directory",
+          "description": "Shared SC matrix format"
+        },
+        {
+          "name": "_node_anndata.h5ad",
+          "type": "anndata",
+          "description": "Original AnnData (preserved)"
+        }
+      ]
+    }
+  },
+  "parameters": {}
+}

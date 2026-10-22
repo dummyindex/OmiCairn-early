@@ -1,0 +1,26 @@
+# Single-cell analysis requirements
+scanpy>=1.9.0
+scvelo>=0.2.5
+
+# Core dependencies (these should work)
+leidenalg
+python-igraph
+umap-learn
+harmonypy
+scrublet
+doubletdetection
+scanorama
+
+# Pseudotime analysis packages
+palantir
+scfates
+cellrank
+
+# Visualization
+plotly>=5.0.0
+seaborn>=0.12.0
+altair>=5.0.0
+
+# Additional useful packages
+jupyter
+ipykernel

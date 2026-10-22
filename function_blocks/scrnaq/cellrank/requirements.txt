@@ -1,0 +1,8 @@
+cellrank==2.0.7
+scanpy>=1.9.0
+pandas
+numpy
+matplotlib
+scikit-learn
+numba
+joblib

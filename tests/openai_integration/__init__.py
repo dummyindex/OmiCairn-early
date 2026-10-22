@@ -1,0 +1,1 @@
+"""OpenAI integration tests that require real API access."""

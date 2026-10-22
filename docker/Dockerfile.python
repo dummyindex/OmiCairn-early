@@ -1,0 +1,84 @@
+# Python execution environment for omicairn-agent-local
+FROM ubuntu:22.04
+
+# Install system dependencies and Python
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    curl \
+    git \
+    wget \
+    python3 \
+    python3-pip \
+    python3-dev \
+    libhdf5-dev \
+    libpng-dev \
+    libfreetype6-dev \
+    libgeos-dev \
+    libproj-dev \
+    libgdal-dev \
+    pkg-config \
+    meson \
+    ninja-build \
+    cmake \
+    gfortran \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Miniforge (architecture detected at build time)
+RUN wget -q https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-$(uname -m).sh -O miniforge.sh && \
+    bash miniforge.sh -b -p /opt/conda && \
+    rm miniforge.sh && \
+    /opt/conda/bin/conda clean -afy
+
+# Add conda to PATH
+ENV PATH=/opt/conda/bin:$PATH
+
+# Create _omicairn_job environment
+RUN conda create -n _omicairn_job python=3.10 -y && \
+    conda clean -afy
+
+# Make conda activate work in the shell
+SHELL ["/bin/bash", "-c"]
+
+# Install meson in the conda environment
+RUN source activate _omicairn_job && \
+    conda install -n _omicairn_job meson>=0.63.3 ninja -c conda-forge -y && \
+    conda clean -afy
+
+# Set working directory
+WORKDIR /workspace
+
+# Copy and install requirements in conda environment
+COPY requirements-base.txt /tmp/
+RUN source activate _omicairn_job && \
+    pip install --no-cache-dir -r /tmp/requirements-base.txt
+
+# Copy and install SC environment requirements
+COPY requirements-sc.txt /tmp/
+RUN source activate _omicairn_job && \
+    pip install --no-cache-dir -r /tmp/requirements-sc.txt
+
+# Copy and install web agent requirements
+COPY requirements-web-agent.txt /tmp/
+RUN source activate _omicairn_job && \
+    pip install --no-cache-dir -r /tmp/requirements-web-agent.txt
+
+# Install playwright browsers (needed for crawl4ai)
+RUN source activate _omicairn_job && \
+    playwright install chromium
+
+# Create necessary directories
+RUN mkdir -p /workspace/input /workspace/output/figures /workspace/tmp
+
+# Set environment variables
+ENV PYTHONUNBUFFERED=1
+ENV COMPUTATION_APP_PATH=/workspace
+
+# Create a wrapper script that activates conda environment
+RUN echo '#!/bin/bash' > /workspace/run_with_conda.sh && \
+    echo 'source /opt/conda/etc/profile.d/conda.sh' >> /workspace/run_with_conda.sh && \
+    echo 'conda activate _omicairn_job' >> /workspace/run_with_conda.sh && \
+    echo 'exec "$@"' >> /workspace/run_with_conda.sh && \
+    chmod +x /workspace/run_with_conda.sh
+
+# Default command uses the wrapper to ensure conda environment is active
+CMD ["/workspace/run_with_conda.sh", "python", "/workspace/run.py"]

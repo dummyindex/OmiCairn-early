@@ -1,0 +1,41 @@
+# Minimal Python execution environment for omicairn-agent-local
+FROM ubuntu:22.04
+
+# Install basic dependencies
+RUN apt-get update && apt-get install -y \
+    python3 \
+    python3-pip \
+    python3-dev \
+    libhdf5-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Create symlinks
+RUN ln -sf /usr/bin/python3 /usr/bin/python && \
+    ln -sf /usr/bin/pip3 /usr/bin/pip
+
+WORKDIR /workspace
+
+# Install minimal Python packages
+RUN pip install --no-cache-dir \
+    numpy==1.25.2 \
+    pandas==2.2.2 \
+    h5py==3.9.0 \
+    anndata==0.10.7 \
+    scanpy \
+    matplotlib \
+    seaborn \
+    langchain \
+    langchain-openai \
+    langchain-community \
+    langgraph \
+    duckduckgo-search \
+    openai \
+    "pydantic>=2.0.0"
+
+# Create directories
+RUN mkdir -p /workspace/input /workspace/output/figures /workspace/tmp
+
+ENV PYTHONUNBUFFERED=1
+ENV COMPUTATION_APP_PATH=/workspace
+
+CMD ["python", "/workspace/run.py"]

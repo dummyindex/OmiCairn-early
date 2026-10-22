@@ -1,0 +1,62 @@
+{
+    "name": "palantir_pseudotime",
+    "description": "Perform Palantir pseudotime analysis with proper API usage",
+    "type": "python",
+    "parameters": {
+        "n_components": {
+            "type": "integer",
+            "default": 10,
+            "description": "Number of diffusion components"
+        },
+        "knn": {
+            "type": "integer",
+            "default": 30,
+            "description": "Number of nearest neighbors for graph construction"
+        },
+        "start_cell": {
+            "type": "string",
+            "default": null,
+            "description": "Cell ID to use as start for pseudotime (auto-detected if null)"
+        },
+        "terminal_states": {
+            "type": "array",
+            "default": null,
+            "description": "List of terminal cell IDs (auto-detected if null)"
+        },
+        "num_waypoints": {
+            "type": "integer",
+            "default": 1200,
+            "description": "Number of waypoints for pseudotime calculation"
+        },
+        "scale_components": {
+            "type": "boolean",
+            "default": true,
+            "description": "Whether to scale diffusion components"
+        },
+        "use_early_cell_as_start": {
+            "type": "boolean",
+            "default": true,
+            "description": "Use heuristic to find early cell as start"
+        }
+    },
+    "inputs": {
+        "adata": {
+            "type": "anndata",
+            "description": "AnnData object with PCA computed"
+        }
+    },
+    "outputs": {
+        "adata": {
+            "type": "anndata",
+            "description": "AnnData object with Palantir pseudotime and entropy"
+        },
+        "palantir_results.csv": {
+            "type": "csv",
+            "description": "CSV file with pseudotime, entropy, and branch probabilities"
+        },
+        "figures": {
+            "type": "directory",
+            "description": "Directory containing pseudotime and branch probability plots"
+        }
+    }
+}

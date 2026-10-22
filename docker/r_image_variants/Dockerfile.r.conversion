@@ -1,0 +1,24 @@
+# Minimal R environment for data conversion only
+FROM r-base:4.4.3
+
+# Install minimal system dependencies
+RUN apt-get update && apt-get install -y \
+    libcurl4-openssl-dev \
+    libssl-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install only essential R packages for conversion
+RUN R -e "install.packages(c('Matrix', 'jsonlite'), repos='https://cloud.r-project.org')"
+
+# Install minimal Seurat dependencies
+RUN R -e "install.packages('Rcpp', repos='https://cloud.r-project.org')"
+RUN R -e "if (!require('BiocManager', quietly = TRUE)) install.packages('BiocManager', repos='https://cloud.r-project.org')"
+RUN R -e "install.packages('SeuratObject', repos='https://cloud.r-project.org')"
+RUN R -e "install.packages('Seurat', repos='https://cloud.r-project.org')"
+
+# Create directories
+RUN mkdir -p /workspace/input /workspace/output/figures /workspace/tmp
+
+WORKDIR /workspace
+
+CMD ["Rscript", "/workspace/run.R"]

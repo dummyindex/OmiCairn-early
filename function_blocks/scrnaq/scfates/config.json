@@ -1,0 +1,48 @@
+{
+    "name": "scfates_trajectory_analysis",
+    "description": "Perform trajectory inference using scFates with corrected API",
+    "type": "python",
+    "parameters": {
+        "n_nodes": {
+            "type": "integer",
+            "default": 10,
+            "description": "Number of nodes for the principal graph"
+        },
+        "use_rep": {
+            "type": "string",
+            "default": "X_pca",
+            "description": "Representation to use for trajectory inference"
+        },
+        "device": {
+            "type": "string",
+            "default": "cpu",
+            "description": "Device to use for computation (cpu or cuda)"
+        },
+        "n_map": {
+            "type": "integer",
+            "default": 100,
+            "description": "Number of mappings for test_association"
+        },
+        "spline_df": {
+            "type": "integer",
+            "default": 5,
+            "description": "Degrees of freedom for spline fitting"
+        }
+    },
+    "inputs": {
+        "adata": {
+            "type": "anndata",
+            "description": "AnnData object with PCA computed"
+        }
+    },
+    "outputs": {
+        "adata": {
+            "type": "anndata",
+            "description": "AnnData object with trajectory analysis results"
+        },
+        "figures": {
+            "type": "directory",
+            "description": "Directory containing trajectory plots"
+        }
+    }
+}

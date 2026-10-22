@@ -1,0 +1,12 @@
+# Ultra-minimal R environment for testing
+FROM r-base:4.4.3
+
+# Install only Matrix and jsonlite for basic conversion testing
+RUN R -e "install.packages(c('Matrix', 'jsonlite'), repos='https://cloud.r-project.org')"
+
+# Create directories
+RUN mkdir -p /workspace/input /workspace/output/figures /workspace/tmp
+
+WORKDIR /workspace
+
+CMD ["Rscript", "/workspace/run.R"]

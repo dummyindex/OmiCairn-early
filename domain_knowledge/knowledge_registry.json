@@ -1,0 +1,60 @@
+{
+  "domains": {
+    "single_cell_genomics": {
+      "file": "single_cell_genomics.md",
+      "description": "Single-cell RNA-seq analysis methods and best practices",
+      "tags": ["pseudotime", "trajectory", "scanpy", "preprocessing", "clustering"],
+      "last_updated": "2025-08-17",
+      "priority": "high",
+      "applicable_to": ["bug_fixer", "function_creator", "orchestrator"]
+    },
+    "pseudotime_implementation": {
+      "file": "pseudotime_implementation_experience.md",
+      "description": "Specific implementation fixes and troubleshooting for pseudotime methods",
+      "tags": ["pseudotime", "palantir", "cellrank", "scfates", "dpt", "dtflow", "trajectory", "debugging"],
+      "last_updated": "2025-08-18",
+      "priority": "high",
+      "applicable_to": ["bug_fixer", "function_creator"]
+    },
+    "function_block_faq": {
+      "file": "function_block_faq.md",
+      "description": "Common issues and solutions for function block development, including previous_nodes usage, file I/O patterns, and debugging tips",
+      "tags": ["function_block", "previous_nodes", "debugging", "common_errors", "best_practices", "faq"],
+      "last_updated": "2025-08-20",
+      "priority": "critical",
+      "applicable_to": ["bug_fixer", "function_creator", "orchestrator"]
+    },
+    "package_validation": {
+      "file": "package_validation_and_common_errors.md",
+      "description": "Package validation patterns, common installation errors, and correct package names for Python dependencies",
+      "tags": ["packages", "requirements", "validation", "common_errors", "pip", "installation"],
+      "last_updated": "2025-08-23",
+      "priority": "high",
+      "applicable_to": ["bug_fixer", "function_creator"]
+    },
+    "cell_type_annotation": {
+      "file": "cell_type_annotation.md",
+      "description": "Correct API usage patterns and best practices for cell type annotation packages including CellTypist, scType, SingleR, and marker-based methods",
+      "tags": ["celltypist", "annotation", "cell_type", "markers", "sctype", "singler", "cellassign", "api_usage"],
+      "last_updated": "2025-08-25",
+      "priority": "critical",
+      "applicable_to": ["bug_fixer", "function_creator", "orchestrator"]
+    },
+    "spatial_enrichment_analysis": {
+      "file": "sc_spatial_case_1.md",
+      "description": "Spatial transcriptomics analysis including Squidpy, GO enrichment with GOATOOLS, and metabolic pathway analysis with GSEApy. Contains complete working implementations and common API corrections",
+      "tags": ["squidpy", "spatial", "goatools", "gseapy", "go_enrichment", "metabolic_pathway", "enrichment", "api_corrections"],
+      "last_updated": "2025-09-03",
+      "priority": "critical",
+      "applicable_to": ["bug_fixer", "function_creator", "orchestrator"]
+    },
+    "function_block_complete_examples": {
+      "file": "function_block_complete_examples.md",
+      "description": "Example function block implementations with proper data loading patterns, a simplified DTFLOW-inspired approximation, Palantir, DPT, clustering, and visualization examples. Critical for bug fixing and function creation.",
+      "tags": ["function_block", "examples", "dtflow", "palantir", "dpt", "clustering", "visualization", "data_loading", "previous_nodes", "complete_code"],
+      "last_updated": "2025-09-08",
+      "priority": "critical",
+      "applicable_to": ["bug_fixer", "function_creator", "orchestrator"]
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "name": "CellTypist Annotation",
+  "description": "Perform automated cell type annotation using CellTypist with pre-trained models",
+  "type": "python",
+  "inputs": {
+    "adata": {
+      "type": "AnnData",
+      "description": "Single-cell expression data (will be normalized if needed)"
+    }
+  },
+  "outputs": {
+    "adata": {
+      "type": "AnnData", 
+      "description": "Annotated data with celltypist_predicted, celltypist_majority, and celltypist_conf columns"
+    }
+  },
+  "parameters": {
+    "model": {
+      "type": "string",
+      "default": "Immune_All_Low.pkl",
+      "description": "CellTypist model to use (e.g., Immune_All_Low.pkl, Immune_All_High.pkl)"
+    },
+    "majority_voting": {
+      "type": "boolean",
+      "default": true,
+      "description": "Enable majority voting across similar cell types"
+    },
+    "over_clustering": {
+      "type": "string",
+      "default": null,
+      "description": "Over-clustering method (e.g., 'leiden') for fine-grained annotation"
+    }
+  }
+}

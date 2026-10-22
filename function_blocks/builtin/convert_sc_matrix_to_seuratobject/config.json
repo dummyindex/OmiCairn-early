@@ -1,0 +1,34 @@
+{
+  "name": "convert_sc_matrix_to_seuratobject",
+  "type": "r",
+  "description": "Convert shared SC matrix format to SeuratObject",
+  "static_config": {
+    "args": [],
+    "description": "Convert SC matrix format to SeuratObject",
+    "tag": "conversion",
+    "input_specification": {
+      "required_files": [
+        {
+          "name": "_node_sc_matrix",
+          "type": "directory",
+          "description": "Shared SC matrix format to convert"
+        }
+      ]
+    },
+    "output_specification": {
+      "output_files": [
+        {
+          "name": "_node_seuratObject.rds",
+          "type": "seurat",
+          "description": "Converted SeuratObject"
+        },
+        {
+          "name": "_node_sc_matrix",
+          "type": "directory",
+          "description": "Original SC matrix (preserved)"
+        }
+      ]
+    }
+  },
+  "parameters": {}
+}

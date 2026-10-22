@@ -1,0 +1,244 @@
+./data
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Flask stuff:
+instance/
+.webassets-cache
+
+# Scrapy stuff:
+.scrapy
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+.pybuilder/
+target/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+.python-version
+
+# pipenv
+Pipfile.lock
+
+# poetry
+poetry.lock
+
+# pdm
+.pdm.toml
+
+# PEP 582
+__pypackages__/
+
+# Celery stuff
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# pytype static type analyzer
+.pytype/
+
+# Cython debug symbols
+cython_debug/
+
+# IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Test outputs
+test_output/
+test_agent_output/
+test_agent_mock_output/
+tests/test_output/
+tests/test_agent_output/
+tests/test_agent_mock_output/
+test_outputs/
+test_output_*/
+test_data/
+*.h5ad
+!data/*.h5ad
+dummy.h5ad
+
+# Agent task logs (dynamically created)
+agent_tasks/
+
+# Temporary files
+temp/
+tmp/
+.temp/
+.tmp/
+
+# Docker
+docker/*.tar
+docker/*.gz
+
+# Logs
+logs/
+*.log
+
+# API keys and secrets
+.env.local
+.env.*.local
+secrets/
+credentials/
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Analysis outputs
+output/
+outputs/
+results/
+past_jobs/
+current_job
+clustering_results_*/
+*_results_*/
+
+# Jupyter notebooks (if any)
+*.ipynb
+!notebooks/*.ipynb
+
+# Large data files
+*.h5
+*.hdf5
+*.zarr
+*.loom
+
+# Model files
+*.pkl
+*.pickle
+*.joblib
+*.sav
+
+# Compressed files
+*.zip
+*.tar.gz
+*.tgz
+*.rar
+
+# Cache directories
+.cache/
+__pycache__/
+*.pyc
+
+# OpenAI API key file
+openai_api_key.txt
+api_keys.json
+# Benchmark outputs
+test_cli_output/
+paper_benchmark_outputs/
+paper_benchmark_minimal/
+
+# Personal assistant/editor settings
+.claude/

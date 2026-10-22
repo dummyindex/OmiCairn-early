@@ -1,0 +1,57 @@
+{
+    "name": "dpt_paga_pseudotime",
+    "description": "Perform DPT (Diffusion Pseudotime) and PAGA analysis for trajectory inference",
+    "type": "python",
+    "parameters": {
+        "n_neighbors": {
+            "type": "integer",
+            "default": 15,
+            "description": "Number of neighbors for kNN graph"
+        },
+        "n_pcs": {
+            "type": "integer",
+            "default": 50,
+            "description": "Number of principal components to use"
+        },
+        "use_rep": {
+            "type": "string",
+            "default": "X_pca",
+            "description": "Representation to use for neighbor computation"
+        },
+        "clustering_key": {
+            "type": "string",
+            "default": "leiden",
+            "description": "Clustering method to use (leiden or louvain)"
+        },
+        "root_cluster": {
+            "type": "string",
+            "default": null,
+            "description": "Cluster to use as root for pseudotime (defaults to the first cluster if null)"
+        },
+        "n_dcs": {
+            "type": "integer",
+            "default": 15,
+            "description": "Number of diffusion components"
+        }
+    },
+    "inputs": {
+        "adata": {
+            "type": "anndata",
+            "description": "AnnData object, preferably with PCA computed"
+        }
+    },
+    "outputs": {
+        "adata": {
+            "type": "anndata",
+            "description": "AnnData object with DPT pseudotime and PAGA results"
+        },
+        "dpt_pseudotime.csv": {
+            "type": "csv",
+            "description": "CSV file with pseudotime values for each cell"
+        },
+        "figures": {
+            "type": "directory",
+            "description": "Directory containing PAGA and pseudotime plots"
+        }
+    }
+}

@@ -1,0 +1,26 @@
+# R environment with Seurat for conversion testing
+FROM r-base:4.4.3
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    libcurl4-openssl-dev \
+    libssl-dev \
+    libxml2-dev \
+    libhdf5-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install basic R packages first
+RUN R -e "install.packages(c('Matrix', 'jsonlite', 'Rcpp'), repos='https://cloud.r-project.org')"
+
+# Install BiocManager
+RUN R -e "install.packages('BiocManager', repos='https://cloud.r-project.org')"
+
+# Install only SeuratObject (lighter than full Seurat)
+RUN R -e "install.packages('SeuratObject', repos='https://cloud.r-project.org')"
+
+# Create directories
+RUN mkdir -p /workspace/input /workspace/output/figures /workspace/tmp
+
+WORKDIR /workspace
+
+CMD ["Rscript", "/workspace/run.R"]
